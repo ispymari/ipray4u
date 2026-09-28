@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPray4U · Privacy & Support</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f0fc;
+      color: #2d1b3d;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ===== TOP NAVIGATION BAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(160, 100, 200, 0.15);
+      padding: 1rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    /* ===== LOGO IMAGE REPLACES ICON + TEXT ===== */
+    .logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    /* Fallback only if image fails – but hidden */
+    .logo-text {
+      display: none;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 0.25rem;
+      background: rgba(200, 170, 230, 0.2);
+      padding: 0.35rem;
+      border-radius: 60px;
+      border: 1px solid rgba(200, 160, 230, 0.25);
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 0.55rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #3d2a50;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tab-btn.active {
+      background: #8b5cf6;
+      color: white;
+      box-shadow: 0 6px 14px -6px #7b4ad0;
+    }
+
+    .tab-btn:not(.active):hover {
+      background: rgba(139, 92, 246, 0.08);
+    }
+
+    /* ===== HERO / PAGE HEADER ===== */
+    .page-hero {
+      background: linear-gradient(145deg, #ede4f7 0%, #f7f0fc 100%);
+      padding: 4rem 3rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(160, 100, 200, 0.1);
+    }
+
+    .page-hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #361b4a;
+      margin-bottom: 0.6rem;
+    }
+
+    .page-hero h1 i {
+      color: #8b5cf6;
+      margin-right: 0.4rem;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      color: #5a3d72;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ===== MAIN PANEL AREA ===== */
+    .panel {
+      display: none;
+      animation: fade 0.35s ease;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.2; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== PRIVACY – FULL WIDTH DOCUMENT ===== */
+    .privacy-doc {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem 5rem;
+    }
+
+    .privacy-doc h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #321b47;
+      margin-top: 2.8rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .privacy-doc h2 i {
+      color: #8b5cf6;
+      font-size: 1.1rem;
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .privacy-doc h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .privacy-doc p {
+      color: #3e2a53;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+    }
+
+    .privacy-doc ul {
+      list-style: none;
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-doc ul li {
+      color: #3e2a53;
+      font-size: 1rem;
+      line-height: 1.8;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    .privacy-doc ul li::before {
+      content: "•";
+      color: #8b5cf6;
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+    }
+
+    /* Intro block */
+    .privacy-intro {
+      background: rgba(210, 180, 240, 0.15);
+      border-left: 5px solid #8b5cf6;
+      border-radius: 0 20px 20px 0;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .privacy-intro p {
+      padding-left: 0;
+      margin-bottom: 0;
+      font-size: 1.05rem;
+      color: #3a2450;
+    }
+
+    /* Update badge */
+    .update-badge {
+      margin-top: 3rem;
+      padding: 1.2rem 2rem;
+      background: rgba(139, 92, 246, 0.08);
+      border-radius: 16px;
+      font-size: 0.9rem;
+      color: #4e2f66;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(139, 92, 246, 0.15);
+    }
+
+    .update-badge i {
+      color: #8b5cf6;
+    }
+
+    /* ===== SUPPORT PAGE ===== */
+    .support-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem 5rem;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .support-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    /* FAQ column */
+    .faq-column h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #321b47;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-column h2 i {
+      color: #8b5cf6;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(160, 120, 200, 0.15);
+      padding: 1.1rem 0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #361b4a;
+      display: flex;
+      gap: 0.7rem;
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .faq-q i {
+      color: #8b5cf6;
+      font-size: 0.75rem;
+      align-self: center;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .faq-a {
+      font-size: 0.96rem;
+      color: #452f5a;
+      line-height: 1.7;
+      margin-top: 0.4rem;
+      padding-left: 2rem;
+    }
+
+    /* Contact column */
+    .contact-column {
+      position: sticky;
+      top: 100px;
+    }
+
+    .contact-block {
+      background: linear-gradient(150deg, #f3e9fc 0%, #ece0f8 100%);
+      border-radius: 28px;
+      padding: 2.2rem 2rem;
+      border: 1px solid rgba(190, 150, 225, 0.25);
+      box-shadow: 0 20px 40px -24px rgba(90, 40, 140, 0.25);
+    }
+
+    .contact-block h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #321b47;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-block h2 i {
+      color: #8b5cf6;
+    }
+
+    .contact-block > p {
+      font-size: 0.95rem;
+      color: #4d3267;
+      margin-bottom: 1.6rem;
+    }
+
+    /* Email display — one line, no wrap, no cut-off */
+    .email-display {
+      background: white;
+      border-radius: 18px;
+      padding: 1.5rem 1rem;
+      border: 1px dashed #a779cf;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .email-display .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #633f85;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .email-display .address {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #5b2b80;
+      white-space: nowrap;
+      display: block;
+      width: 100%;
+      letter-spacing: -0.01em;
+    }
+
+    .email-display .note {
+      font-size: 0.82rem;
+      color: #6a4a85;
+      margin-top: 0.6rem;
+      display: block;
+    }
+
+    .contact-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: #4e2f66;
+    }
+
+    .contact-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-meta i {
+      color: #8b5cf6;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .support-note {
+      margin-top: 1.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(160, 120, 200, 0.2);
+      font-size: 0.88rem;
+      color: #553a70;
+      line-height: 1.6;
+    }
+
+    .support-note i {
+      color: #8b5cf6;
+      margin-right: 0.3rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #2f1a44;
+      color: #d8c8ec;
+      padding: 2.5rem 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .footer .footer-logo i {
+      color: #b48ad9;
+    }
+
+    .footer p {
+      opacity: 0.75;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer .footer-links {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer .footer-links a {
+      color: #c6a8e0;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .footer .footer-links a:hover {
+      color: white;
+    }
+
+    /* ===== FOOTER EMAIL — YELLOW FONT (forced with !important) ===== */
+    .footer .footer-links a.footer-email,
+    .footer a.footer-email {
+      color: #f9e74a !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      transition: 0.2s;
+    }
+
+    .footer .footer-links a.footer-email:hover,
+    .footer a.footer-email:hover {
+      color: #fff9c4 !important;
+      text-decoration: underline !important;
+    }
+
+    /* ===== HIGHLIGHT FOR CONTACT DETAILS (YELLOW) ===== */
+    .highlight-yellow {
+      background-color: #fff9c4;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #2d1b3d;
+      border: 1px solid #f9e74a;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    /* Highlighted block — single line, no wrap, no clipping */
+    .highlight-yellow-block {
+      background-color: #fff9c4;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid #f9e74a;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #2d1b3d;
+      white-space: nowrap;
+      line-height: 1.5;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+      .page-hero {
+        padding: 3rem 1.5rem 2rem;
+      }
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+      .privacy-doc {
+        padding: 2.5rem 1.5rem 4rem;
+      }
+      .privacy-doc p,
+      .privacy-doc ul {
+        padding-left: 0;
+      }
+      .privacy-doc ul li {
+        padding-left: 1.3rem;
+      }
+      .privacy-doc h2 {
+        padding-left: 0;
+      }
+      .support-container {
+        padding: 2.5rem 1.5rem 4rem;
+      }
+      .contact-column {
+        position: static;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.2rem;
+      }
+      .tab-nav {
+        width: 100%;
+        justify-content: center;
+      }
+      .tab-btn {
+        padding: 0.5rem 1.1rem;
+        font-size: 0.85rem;
+      }
+      .page-hero h1 {
+        font-size: 1.65rem;
+      }
+      .page-hero p {
+        font-size: 0.95rem;
+      }
+      .privacy-doc h2 {
+        font-size: 1.15rem;
+      }
+      .email-display {
+        padding: 1.2rem 0.8rem;
+      }
+      .email-display .address {
+        font-size: 0.85rem;
+      }
+      .highlight-yellow-block {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.85rem;
+      }
+      .footer {
+        padding: 2rem 1.5rem;
+      }
+      .logo-img {
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .email-display .address {
+        font-size: 0.75rem;
+      }
+      .highlight-yellow-block {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.7rem;
+      }
+      .logo-img {
+        height: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="logo-area">
+    <!-- Image logo replaces the icon + text -->
+    <img src="app_logo.jpg" alt="iPray4U Logo" class="logo-img" />
+    <!-- Hidden fallback text (only appears if image fails? we keep it hidden) -->
+    <span class="logo-text">iPray4U</span>
+  </div>
+  <div class="tab-nav" id="tabNav">
+    <button class="tab-btn active" data-panel="privacy"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i>Privacy</button>
+    <button class="tab-btn" data-panel="support"><i class="fas fa-life-ring" style="margin-right: 6px;"></i>Support</button>
+  </div>
+</nav>
+
+<!-- ===== PRIVACY PANEL ===== -->
+<section id="privacy" class="panel active">
+  <div class="page-hero">
+    <h1><i class="fas fa-lock"></i> Privacy Policy</h1>
+    <p>Your prayers are sacred, and so is your privacy. iPray4U is built with a zero‑data philosophy — no login, no backend, no tracking.</p>
+  </div>
+
+  <div class="privacy-doc">
+    <div class="privacy-intro">
+      <p><strong>iPray4U Privacy Policy – Hybrid Version 5.1</strong><br>Effective Date: September 9, 2026</p>
+      <p style="margin-top: 0.8rem;">iPray4U ("we", "our", or "us") respects your privacy. This Privacy Policy explains how the iPray4U mobile application handles information when you use the app. The short version: iPray4U itself does not collect personal information, does not store users' personal information on its servers, does not collect usage information through analytics or tracking, and cannot remotely access users' locally stored prayers or other saved content. User-saved content remains on the user's device.</p>
+    </div>
+
+    <h2><i class="fas fa-user-check"></i> No Account · No Sign‑Up</h2>
+    <p>We never ask for your name, email address, phone number, or any other personal identifier. There is no registration, no password, and no user profile. You can use the app completely anonymously, from the first launch onward. iPray4U itself does not collect, store, retain or share the user's personal information.</p>
+
+    <h2><i class="fas fa-database"></i> No Backend · No Database</h2>
+    <p>Users can save prayers, favourites, settings, and other app-related content locally within the app. This information is stored only on the user's device and is not transmitted to or stored on an iPray4U server.</p>
+    <ul>
+      <li>iPray4U does not have a backend system that allows us to remotely access, view, retrieve, or manage the user's locally stored prayers, favourites, settings, or other saved content.</li>
+      <li>There is no iPray4U cloud system used to upload, synchronise, or back up this user content.</li>
+      <li>The current iOS and Android implementations do not contain an iPray4U backend/server or remote database.</li>
+      <li>Your saved prayers live only on your device.</li>
+      <li>Nothing is uploaded, synced, or backed up to an iPray4U cloud system.</li>
+      <li>We have no technical means to remotely access your locally stored content.</li>
+    </ul>
+
+    <h2><i class="fas fa-chart-line"></i> No Analytics · No Tracking · No Third‑Party Data Collection</h2>
+    <p>iPray4U does not use analytics or usage-tracking services.</p>
+    <ul>
+      <li>The current iOS and Android implementations do not use services such as Google Analytics, Firebase Analytics, Mixpanel, Amplitude, or similar analytics or tracking services.</li>
+      <li>iPray4U also does not use third-party crash-reporting, error-reporting, performance-monitoring, or diagnostic services such as Crashlytics, Sentry, BugSnag, or similar services.</li>
+      <li>The app does not contain tracking SDKs, advertising SDKs, attribution services, fingerprinting technology, advertising identifiers, or personalised advertising.</li>
+      <li>No third-party services are used to collect or process user information.</li>
+      <li>User-generated content and app usage data are not transmitted from the device to any third party.</li>
+    </ul>
+
+    <h2><i class="fas fa-mobile-alt"></i> No Device Information for Tracking</h2>
+    <p>iPray4U itself does not intentionally collect or transmit device information such as the device model, operating system/version, IP address, advertising identifier, or device identifier for the purpose of identifying or tracking users. The app does not contain advertising identifiers, tracking SDKs, fingerprinting technology, or other tracking mechanisms. Any information that may be automatically collected or processed independently by Apple or Google as part of their operating system or app-store services is separate from information collected by iPray4U itself.</p>
+
+    <h2><i class="fas fa-cloud-upload-alt"></i> No External APIs or Online Services · No Cloud Sync</h2>
+    <p>iPray4U does not communicate with any backend, external API, cloud storage service, or other online service. The app does not communicate with an iPray4U backend/server or remote database. There are no third-party external services used to collect or process user information.</p>
+    <p>Your prayers are not backed up to any iPray4U cloud service. If you delete the app or its associated locally stored app data, your saved prayers will generally be removed from the device, subject to the device operating system's own handling of app data and backups. There is no iPray4U server or cloud system storing your prayers or other locally stored user content.</p>
+
+    <h2><i class="fas fa-share-alt"></i> No Sharing of Data</h2>
+    <p>iPray4U does not collect, store, retain, or share users' personal information with third parties. We never sell, rent, trade, or share users' personal information. Since iPray4U collects no personal information, there is no personal information held by iPray4U to sell, rent, trade, or share.</p>
+    <p>The app does not intentionally transmit user information to Apple, Google, or any other third party. The Apple App Store, Google Play Store, or other platforms through which the app may be made available may independently collect or process certain information in connection with downloading, installing, updating, or using apps. Such processing is separate from information collected by iPray4U and is governed by the relevant platform's own privacy policy and terms.</p>
+
+    <h2><i class="fas fa-info-circle"></i> How We Use Your Information</h2>
+    <p>iPray4U does not collect, store, retain, or save personal information from users. The app is provided free of charge to allow users to send prayer and love messages without the need to provide personal information.</p>
+    <p>iPray4U itself collects no personal, usage, or device information; it does not retain or share such information; users can use the app without creating an account; and any information independently processed by an app-store platform is the responsibility of that platform under its own privacy arrangements. Because iPray4U does not collect or transmit personal information, user-generated content, or app usage data to iPray4U or third-party services, there is no user information being used by iPray4U for advertising, analytics, profiling, or personalised marketing.</p>
+
+    <h2><i class="fas fa-shield-alt"></i> Data Security</h2>
+    <p>Because iPray4U does not collect, store, retain, or save users' personal information on iPray4U servers, there is no user personal information held by iPray4U servers that requires protection against unauthorised access. We nevertheless take reasonable steps to ensure that the app operates in a manner consistent with this Privacy Policy.</p>
+    <p>Because user-generated content is stored locally on the user's device and is not transmitted to an iPray4U server or third-party service, the security of that locally stored information also depends on the security of the user's device and its operating system. Where Apple, Google, or another platform independently processes information in connection with its operating system or app-store services, that processing is governed by the relevant provider's own policies and terms.</p>
+
+    <h2><i class="fas fa-gavel"></i> Your Rights &amp; Control</h2>
+    <p>You have control over your locally stored data because your information remains on your device.</p>
+    <ul>
+      <li><strong>Access your data:</strong> Your saved information is stored on your device.</li>
+      <li><strong>Delete your data:</strong> You can delete locally stored information by deleting the app or its associated locally stored app data, as applicable and subject to the device operating system's own handling of app data and backups.</li>
+      <li><strong>Port your data:</strong> Not applicable to information held by iPray4U because nothing is transmitted from your device to our servers.</li>
+    </ul>
+    <p>You can also contact us if you have questions about how the app handles your information.</p>
+
+    <h2><i class="fas fa-child"></i> Children's Privacy</h2>
+    <p>Our app is intended to be suitable for users of all ages. We do not knowingly collect personal information from anyone, including children. Because iPray4U does not collect personal information, we do not knowingly collect personal information from children under 13.</p>
+
+    <h2><i class="fas fa-sync-alt"></i> Changes to This Policy</h2>
+    <p>If we ever update this Privacy Policy, we will revise the effective date above. Our zero-data approach is fundamental to the app. If our information-handling practices change, we will update this Privacy Policy so that it accurately describes how iPray4U handles information.</p>
+
+    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+    <p>If you have questions about this Privacy Policy or how iPray4U handles information, please contact us at: <span class="highlight-yellow">reyesmariane001@gmail.com</span></p>
+
+    <div class="update-badge">
+      <i class="fas fa-pray"></i> Effective Date: September 9, 2026 · Hybrid Version 5.1
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUPPORT PANEL ===== -->
+<section id="support" class="panel">
+  <div class="page-hero">
+    <h1><i class="fas fa-life-ring"></i> Support Center</h1>
+    <p>Answers to common questions, plus a direct line to us for anything else.</p>
+  </div>
+
+  <div class="support-container">
+    <!-- FAQs -->
+    <div class="faq-column">
+      <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> How do I save a prayer?</div>
+        <div class="faq-a">Simply tap the "save" or "favorite" icon on any prayer card. All saved prayers are stored locally on your device.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> Will my prayers be lost if I close the tab?</div>
+        <div class="faq-a">No — your prayers are saved in your browser's local storage. As long as you don't clear your browser data, they remain.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> Is my data safe without a login?</div>
+        <div class="faq-a">Absolutely. Since no data leaves your device, there's no risk of a server breach. Your privacy is maximized.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> Can I export my prayers?</div>
+        <div class="faq-a">Currently, prayers are kept within the app. We recommend saving them as favorites and using your device's screenshot feature for sharing.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> Do you collect any analytics?</div>
+        <div class="faq-a">None at all. We don't use analytics, crash reporting, or third-party SDKs that collect data.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> Does the app work offline?</div>
+        <div class="faq-a">Yes — after the first load, the app works fully offline. Your prayers and preferences are available anytime, anywhere.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><i class="fas fa-chevron-right"></i> How do I reset the app?</div>
+        <div class="faq-a">Clear your browser's local storage or app cache. This removes all saved prayers and preferences, returning the app to its fresh state.</div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-column">
+      <div class="contact-block">
+        <h2><i class="fas fa-envelope"></i> Contact Support</h2>
+        <p>Have a question that isn't answered above? Send us an email and we'll get back to you.</p>
+
+        <div class="email-display">
+          <div class="label">Email us at</div>
+          <div class="address">
+            <span class="highlight-yellow-block">reyesmariane001@gmail.com</span>
+          </div>
+          <div class="note"><i class="fas fa-reply-all"></i> We usually reply within 24 hours</div>
+        </div>
+
+        <div class="contact-meta">
+          <span><i class="far fa-clock"></i> Support hours: 9am – 6pm (EST)</span>
+          <span><i class="fas fa-heart"></i> We're here for you</span>
+          <span><i class="fas fa-shield-alt"></i> Your email stays private</span>
+        </div>
+
+        <div class="support-note">
+          <p><i class="fas fa-hands-helping"></i> <strong>Need immediate help?</strong> Check the FAQs first — they cover most common questions.</p>
+          <p style="margin-top: 0.6rem;"><i class="fas fa-mobile-alt"></i> This app works fully offline after the first load.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">
+    <i class="fas fa-hands-praying"></i> iPray4U
+  </div>
+  <p>Built with privacy at its core. No accounts, no tracking, no compromises.</p>
+  <div class="footer-links">
+    <a href="#" onclick="switchTo('privacy'); return false;">Privacy Policy</a>
+    <a href="#" onclick="switchTo('support'); return false;">Support</a>
+    <a href="mailto:reyesmariane001@gmail.com" class="footer-email" style="color: #f9e74a !important;">reyesmariane001@gmail.com</a>
+  </div>
+  <p style="margin-top: 1.2rem; font-size: 0.8rem; opacity: 0.6;">© 2026 iPray4U. All rights reserved.</p>
+</footer>
+
+<script>
+  // ===== TAB SWITCHING =====
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = {
+    privacy: document.getElementById('privacy'),
+    support: document.getElementById('support')
+  };
+
+  function activatePanel(panelId) {
+    Object.keys(panels).forEach(key => {
+      panels[key].classList.remove('active');
+    });
+    if (panels[panelId]) {
+      panels[panelId].classList.add('active');
+    }
+    tabs.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.dataset.panel === panelId) {
+        btn.classList.add('active');
+      }
+    });
+    // Scroll to top when switching
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const panelId = this.dataset.panel;
+      if (panelId) activatePanel(panelId);
+    });
+  });
+
+  // Helper for footer links
+  function switchTo(panelId) {
+    activatePanel(panelId);
+  }
+
+  // Default state
+  if (!panels.privacy.classList.contains('active') && !panels.support.classList.contains('active')) {
+    activatePanel('privacy');
+  }
+  const activePanel = document.querySelector('.panel.active');
+  if (activePanel) {
+    tabs.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.panel === activePanel.id);
+    });
+  } else {
+    activatePanel('privacy');
+  }
+</script>
+
+</body>
+</html>
